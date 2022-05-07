@@ -9,45 +9,30 @@ export class Triangle {
   }
 
   get isEquilateral() {
-    if (
+    return (
       this.sideOne != 0 &&
       this.sideOne === this.sideTwo &&
       this.sideTwo === this.sideThree
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    );
   }
 
   get isIsosceles() {
-    if (
-      this.sideOne === this.sideTwo ||
-      this.sideTwo === this.sideThree ||
-      this.sideThree === this.sideOne
-    ) {
-      if (
-        this.sideOne > this.sideTwo + this.sideThree ||
-        this.sideThree > this.sideTwo + this.sideOne ||
-        this.sideTwo > this.sideThree + this.sideOne
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return false;
-    }
+    return (
+      (this.sideOne === this.sideTwo &&
+        this.sideThree < this.sideTwo + this.sideOne) ||
+      (this.sideTwo === this.sideThree &&
+        this.sideOne < this.sideTwo + this.sideThree) ||
+      (this.sideThree === this.sideOne &&
+        this.sideTwo < this.sideThree + this.sideOne)
+    );
   }
 
   get isScalene() {
-    if (this.sideOne > this.sideTwo + this.sideThree||
-      this.sideOne === this.sideTwo ||
-      (this.sideOne === this.sideTwo && this.sideTwo === this.sideThree)
-    ) {
-      return false;
-    } else {
-      return true;
-    }
+    return (
+      this.sideOne < this.sideTwo + this.sideThree &&
+      this.sideOne != this.sideTwo &&
+      this.sideOne != this.sideTwo &&
+      this.sideTwo != this.sideThree
+    );
   }
 }
